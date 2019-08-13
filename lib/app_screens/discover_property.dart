@@ -93,9 +93,9 @@ class _DiscoverPropertyState extends State<DiscoverProperty> {
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.bold)),
                           _buildCard('Chris', 'assets/images/chris.jpg',
-                              '2,800', 'Alam Nusantara, Setia Alam', '3', '2'),
+                              '2,800', 'Alam Nusantara, Setia Alam', '3', '2', 'Unit'),
                           _buildCard('Hugh', 'assets/images/hugh.jpg', '2,200',
-                              'The Lake Residence, Puchong', '5', '3')
+                              'The Lake Residence, Puchong', '5', '3', 'Room')
                         ],
                       ),
                     ),
@@ -108,13 +108,13 @@ class _DiscoverPropertyState extends State<DiscoverProperty> {
   }
 
   _buildCard(String name, String imgPath, String rental, String location,
-      String noOfRooms, String noOfBathrooms) {
+      String noOfRooms, String noOfBathrooms, String rentType) {
     return GestureDetector(
         onTap: () {
           Navigator.push(context,
               MaterialPageRoute(builder: (BuildContext context) {
             return PropertyDetails(
-                name: name, imgPath: imgPath, rental: rental, location: location, noOfRooms: noOfRooms, noOfBathrooms: noOfBathrooms);
+                name: name, imgPath: imgPath, rental: rental, location: location, noOfRooms: noOfRooms, noOfBathrooms: noOfBathrooms, rentType: rentType,);
           }));
         },
         child: Padding(
@@ -196,7 +196,7 @@ class _DiscoverPropertyState extends State<DiscoverProperty> {
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 8.0),
-                          child: customListTile(noOfRooms, noOfBathrooms),
+                          child: customListTile(noOfRooms, noOfBathrooms, rentType),
                         )
                       ],
                     )),
@@ -243,7 +243,7 @@ class _DiscoverPropertyState extends State<DiscoverProperty> {
         ));
   }
 
-  Widget customListTile(String noOfRooms, String noOfBathrooms) {
+  Widget customListTile(String noOfRooms, String noOfBathrooms, String rentType) {
     return Container(
       margin: EdgeInsets.all(4.0),
       child: Row(
@@ -252,7 +252,7 @@ class _DiscoverPropertyState extends State<DiscoverProperty> {
           SizedBox(
             width: 5.0,
           ),
-          Text(noOfRooms),
+          Text(noOfRooms + ' | '),
           SizedBox(
             width: 10.0,
           ),
@@ -260,7 +260,11 @@ class _DiscoverPropertyState extends State<DiscoverProperty> {
           SizedBox(
             width: 5.0,
           ),
-          Text(noOfBathrooms)
+          Text(noOfBathrooms),
+          SizedBox(
+            width: 5.0,
+          ),
+          Text(' | ' + rentType)
         ],
       ),
     );

@@ -7,9 +7,10 @@ class PropertyDetails extends StatelessWidget {
   String location;
   String noOfRooms;
   String noOfBathrooms;
+  String rentType;
 
   PropertyDetails({@required this.name, @required this.imgPath, @required this.rental, @required this.location,
-     @required this.noOfRooms, @required this.noOfBathrooms});
+     @required this.noOfRooms, @required this.noOfBathrooms, @required this.rentType});
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +119,7 @@ class PropertyDetails extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
-                            customListTile(noOfRooms, noOfBathrooms),
+                            customListTile(noOfRooms, noOfBathrooms, rentType),
                             Text('1,200 sq.ft')
                           ],
                         ),
@@ -216,7 +217,7 @@ class PropertyDetails extends StatelessWidget {
     );
   }
 
-  Widget customListTile(String noOfRooms, String noOfBathrooms) {
+  Widget customListTile(String noOfRooms, String noOfBathrooms, String rentType) {
     return Container(
       child: Row(
         children: <Widget>[
@@ -227,7 +228,7 @@ class PropertyDetails extends StatelessWidget {
           SizedBox(
             width: 5.0,
           ),
-          Text(noOfRooms),
+          Text(noOfRooms + ' | '),
           SizedBox(
             width: 10.0,
           ),
@@ -238,7 +239,11 @@ class PropertyDetails extends StatelessWidget {
           SizedBox(
             width: 5.0,
           ),
-          Text(noOfBathrooms)
+          Text(noOfBathrooms),
+          SizedBox(
+            width: 5.0,
+          ),
+          Text(' | ' + rentType)
         ],
       ),
     );

@@ -37,29 +37,35 @@ class WaveProgressState extends State<WaveProgress>
   @override
   Widget build(BuildContext context) {
     return new Container(
-        width: widget.size,
-        height: widget.size,
-        decoration: new BoxDecoration(
-            color: widget.fillColor.withOpacity(.1),
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                  color: widget.fillColor.withOpacity(.2),
-                  blurRadius: 10,
-                  offset: Offset(0, 10))
-            ]),
-        child: ClipPath(
-            clipper: CircleClipper(),
-            child: new AnimatedBuilder(
-                animation: controller,
-                builder: (BuildContext context, Widget child) {
-                  return new CustomPaint(
-                      painter: WaveProgressPainter(
-                          controller,
-                          widget.borderColor,
-                          widget.fillColor,
-                          widget.progress));
-                })));
+      width: widget.size,
+      height: widget.size,
+      decoration: new BoxDecoration(
+        color: widget.fillColor.withOpacity(.1),
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(
+              color: widget.fillColor.withOpacity(.2),
+              blurRadius: 10,
+              offset: Offset(0, 10))
+        ]
+      ),
+      child: ClipPath(
+        clipper: CircleClipper(),
+        child: new AnimatedBuilder(
+          animation: controller,
+          builder: (BuildContext context, Widget child) {
+            return new CustomPaint(
+              painter: WaveProgressPainter(
+                controller,
+                widget.borderColor,
+                widget.fillColor,
+                widget.progress
+              )
+            );
+          }
+        )
+      )
+    );
   }
 }
 

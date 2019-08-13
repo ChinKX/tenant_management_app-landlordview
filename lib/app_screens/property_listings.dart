@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tenant_management_app_landlordview/app_screens/property_details.dart';
-import 'package:tenant_management_app_landlordview/app_screens/settings.dart';
 
 class PropertyListings extends StatefulWidget {
   @override
@@ -66,16 +64,6 @@ class _PropertyListingsState extends State<PropertyListings> {
                         },
                       ),
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => SettingsScreen('search')));
-                      },
-                      child: Icon(
-                        FontAwesomeIcons.slidersH,
-                        color: Colors.black54,
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -93,9 +81,9 @@ class _PropertyListingsState extends State<PropertyListings> {
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.bold)),
                           _buildCard('Chris', 'assets/images/chris.jpg',
-                              '2,800', 'Alam Nusantara, Setia Alam', '3', '2'),
+                              '2,800', 'Alam Nusantara, Setia Alam', '3', '2', 'Unit'),
                           _buildCard('Chris', 'assets/images/chris.jpg', '2,200',
-                              'The Lake Residence, Puchong', '5', '3')
+                              'The Lake Residence, Puchong', '5', '3', 'Room')
                         ],
                       ),
                     ),
@@ -108,13 +96,13 @@ class _PropertyListingsState extends State<PropertyListings> {
   }
 
   _buildCard(String name, String imgPath, String rental, String location,
-      String noOfRooms, String noOfBathrooms) {
+      String noOfRooms, String noOfBathrooms, String rentType) {
     return GestureDetector(
         onTap: () {
           Navigator.push(context,
               MaterialPageRoute(builder: (BuildContext context) {
             return PropertyDetails(
-                name: name, imgPath: imgPath, rental: rental, location: location, noOfRooms: noOfRooms, noOfBathrooms: noOfBathrooms);
+                name: name, imgPath: imgPath, rental: rental, location: location, noOfRooms: noOfRooms, noOfBathrooms: noOfBathrooms, rentType: rentType,);
           }));
         },
         child: Padding(
@@ -196,7 +184,7 @@ class _PropertyListingsState extends State<PropertyListings> {
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 8.0),
-                          child: customListTile(noOfRooms, noOfBathrooms),
+                          child: customListTile(noOfRooms, noOfBathrooms, rentType),
                         )
                       ],
                     )),
@@ -243,7 +231,7 @@ class _PropertyListingsState extends State<PropertyListings> {
         ));
   }
 
-  Widget customListTile(String noOfRooms, String noOfBathrooms) {
+  Widget customListTile(String noOfRooms, String noOfBathrooms, String rentType) {
     return Container(
       margin: EdgeInsets.all(4.0),
       child: Row(
@@ -252,7 +240,7 @@ class _PropertyListingsState extends State<PropertyListings> {
           SizedBox(
             width: 5.0,
           ),
-          Text(noOfRooms),
+          Text(noOfRooms + ' | '),
           SizedBox(
             width: 10.0,
           ),
@@ -260,7 +248,11 @@ class _PropertyListingsState extends State<PropertyListings> {
           SizedBox(
             width: 5.0,
           ),
-          Text(noOfBathrooms)
+          Text(noOfBathrooms),
+          SizedBox(
+            width: 5.0,
+          ),
+          Text(' | ' + rentType)
         ],
       ),
     );

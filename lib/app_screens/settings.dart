@@ -49,7 +49,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 padding: EdgeInsets.only(
                     top: _minimumPadding, bottom: _minimumPadding),
                 child: TextField(
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.multiline,
+                  maxLines: 4,
                   decoration: InputDecoration(
                       labelText: 'Location',
                       hintText: 'Enter desired location',

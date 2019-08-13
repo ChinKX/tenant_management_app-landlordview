@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tenant_management_app_landlordview/app_screens/create_listing.dart';
 import 'package:tenant_management_app_landlordview/app_screens/discover_property.dart';
 import 'package:tenant_management_app_landlordview/app_screens/general.dart';
 import 'package:tenant_management_app_landlordview/app_screens/tenant_rental_status.dart';
@@ -179,47 +181,22 @@ class _HomeState extends State<Home> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Material(
-                          color: Colors.indigo,
+                          color: Color(0xffa7414a),
                           shape: CircleBorder(),
                           child: Padding(
                             padding: EdgeInsets.all(16.0),
-                            child: Icon(Icons.assignment_turned_in,
+                            child: Icon(FontAwesomeIcons.list,
                                 color: Colors.white, size: 30.0),
                           )),
                       Padding(padding: EdgeInsets.only(bottom: 16.0)),
-                      Text('Register Property',
+                      Text('Create Property Listing',
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w700,
                               fontSize: 24.0)),
                     ]),
               ),
-              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => TrackFinance()))
-            ),
-            _buildTile(
-              Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Material(
-                          color: Colors.deepOrange,
-                          shape: CircleBorder(),
-                          child: Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: Icon(Icons.share,
-                                color: Colors.white, size: 30.0),
-                          )),
-                      Padding(padding: EdgeInsets.only(bottom: 16.0)),
-                      Text('Advertise Property',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 24.0)),
-                    ]),
-              ),
-              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => TrackFinance()))
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CreateListing()))
             ),
           ],
           staggeredTiles: [
@@ -227,7 +204,6 @@ class _HomeState extends State<Home> {
             StaggeredTile.extent(1, 210.0),
             StaggeredTile.extent(1, 190.0),
             StaggeredTile.extent(2, 110.0),
-            StaggeredTile.extent(1, 190.0),
             StaggeredTile.extent(1, 210.0),
           ],
         ));

@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:tenant_management_app_landlordview/data/data.dart';
-import 'package:tenant_management_app_landlordview/widgets/tenancy_card.dart';
+import 'package:tenant_management_app_landlordview/widgets/tenant_card.dart';
 
-class Tenancy extends StatelessWidget {
-  final String propertyNo;
-
-  Tenancy({this.propertyNo});
-
+class Tenants extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _media = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            'Property ' + this.propertyNo,
+            'Current Tenants',
             style: TextStyle(
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.bold,
@@ -45,43 +41,6 @@ class Tenancy extends StatelessWidget {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(
-                      left: 25.0, bottom: 15, right: 10, top: 40),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        "All",
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Text(
-                        "Pending",
-                        style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Text(
-                        "Signed",
-                        style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey),
-                      ),
-                      Spacer(),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
                     left: 25.0,
                     bottom: 15,
                     top: 15,
@@ -110,10 +69,10 @@ class Tenancy extends StatelessWidget {
                           );
                         },
                         padding: EdgeInsets.zero,
-                        itemCount: getTenanciesCard().length,
+                        itemCount: getTenantsCard().length,
                         itemBuilder: (BuildContext context, int index) {
-                          return TenancyCardWidget(
-                            tenancy: getTenanciesCard()[index],
+                          return TenantCardWidget(
+                            tenant: getTenantsCard()[index],
                           );
                         },
                       ),

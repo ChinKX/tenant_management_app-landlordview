@@ -1,13 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:tenant_management_app_landlordview/app_screens/maintenance_form.dart';
 import 'package:tenant_management_app_landlordview/data/data.dart';
 import 'package:tenant_management_app_landlordview/widgets/maintenance_card.dart';
 
 class Maintenance extends StatelessWidget {
+  final String propertyNo;
+
+  Maintenance({this.propertyNo});
+
   @override
   Widget build(BuildContext context) {
     final _media = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+            'Property ' + this.propertyNo,
+            style: TextStyle(
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold,
+                color: Colors.black),
+          ),
+          centerTitle: true,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+              size: 16.0,
+            ),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+      ),
       body: ListView(
         padding: EdgeInsets.zero,
         physics: BouncingScrollPhysics(),
@@ -99,24 +124,6 @@ class Maintenance extends StatelessWidget {
             ),
           ),
         ],
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => MaintenanceForm())),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        notchMargin: 4.0,
-        child: new Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            SizedBox(
-              height: 40.0,
-            )
-          ],
-        ),
       ),
     );
   }

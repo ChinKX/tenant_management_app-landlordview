@@ -22,7 +22,7 @@ class _MaintenanceFormState extends State<MaintenanceForm> {
         child: ListView(
           children: <Widget>[
             ListTile(
-              title: Text("Rent Type"),
+              title: Text("Maintenance Type"),
               trailing: DropdownButton<String>(
                 items: _maintenanceType.map((String value) {
                   return DropdownMenuItem<String>(

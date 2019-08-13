@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tenant_management_app_landlordview/app_screens/maintenance.dart';
-import 'package:tenant_management_app_landlordview/app_screens/profile.dart';
 import 'package:tenant_management_app_landlordview/app_screens/property_listings.dart';
-import 'package:tenant_management_app_landlordview/app_screens/tenancy.dart';
+import 'package:tenant_management_app_landlordview/app_screens/property_maintenance.dart';
+import 'package:tenant_management_app_landlordview/app_screens/property_tenancy.dart';
+import 'package:tenant_management_app_landlordview/app_screens/tenants.dart';
 import 'package:tenant_management_app_landlordview/data/data.dart';
 import 'package:tenant_management_app_landlordview/models/maintenance_model.dart';
 import 'package:tenant_management_app_landlordview/models/tenancy_model.dart';
@@ -50,7 +50,7 @@ class GeneralPage extends StatelessWidget {
             height: 25,
           ),
           Text(
-            "Current Lease",
+            "Rental Properties",
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -86,22 +86,22 @@ class GeneralPage extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => Maintenance())),
+                .push(MaterialPageRoute(builder: (_) => PropertyMaintenance())),
             child: Container(
               margin: EdgeInsets.only(
                 top: 15,
                 right: 20,
               ),
               height: screenAwareSize(
-                  _media.longestSide <= 775 ? 180 : 130, context),
+                  _media.longestSide <= 775 ? 120 : 80, context),
               decoration: BoxDecoration(
                 color: Color(0xff6C5B7B),
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.shade100,
-                    blurRadius: 6,
-                    spreadRadius: 10,
+                    color: Colors.grey.withOpacity(0.4),
+                    blurRadius: 5,
+                    offset: Offset(0, 8)
                   )
                 ],
               ),
@@ -115,7 +115,7 @@ class GeneralPage extends StatelessWidget {
                       child: Row(
                         children: <Widget>[
                           Text(
-                            maintenance.name,
+                            'Total Requests: 8',
                             style: TextStyle(
                               fontSize: 22,
                               color: Colors.white,
@@ -135,7 +135,7 @@ class GeneralPage extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
-                      "Status:  ${maintenance.completed ? "Completed" : "In Progress"}",
+                      "Pending Requests: 4",
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.white70,
@@ -149,7 +149,7 @@ class GeneralPage extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
-                      'Maintenance Type:  ' + maintenance.type,
+                      'Completed Requests: 4',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.white70,
@@ -158,30 +158,6 @@ class GeneralPage extends StatelessWidget {
                     ),
                   ),
                   Spacer(),
-                  Container(
-                      padding: EdgeInsets.all(10.0),
-                      margin: EdgeInsets.only(bottom: 8.0),
-                      child: Row(
-                        children: <Widget>[
-                          Text(
-                            'Scheduled Date: ' + maintenance.date,
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.white70,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(width: 30.0),
-                          Text(
-                            'Time: ' + maintenance.hour,
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.white70,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      )),
                 ],
               ),
             ),
@@ -205,22 +181,22 @@ class GeneralPage extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => Tenancy())),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => PropertyTenancy())),
             child: Container(
               margin: EdgeInsets.only(
                 top: 15,
                 right: 20,
               ),
               height:
-                  screenAwareSize(_media.longestSide <= 775 ? 180 : 130, context),
+                  screenAwareSize(_media.longestSide <= 775 ? 120 : 80, context),
               decoration: BoxDecoration(
                 color: Color(0xff355C7D),
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.shade100,
-                    blurRadius: 6,
-                    spreadRadius: 10,
+                    color: Colors.grey.withOpacity(0.4),
+                    blurRadius: 5,
+                    offset: Offset(0, 8)
                   )
                 ],
               ),
@@ -233,7 +209,7 @@ class GeneralPage extends StatelessWidget {
                       child: Row(
                         children: <Widget>[
                           Text(
-                            tenancy.name,
+                            'Total Contracts: 4',
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.white,
@@ -248,12 +224,12 @@ class GeneralPage extends StatelessWidget {
                         ],
                       )),
                   SizedBox(
-                    height: 10.0,
+                    height: 20.0,
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
-                      "Status:  ${tenancy.completed ? "Completed" : "Pending"}",
+                      "Pending: 2",
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.white70,
@@ -267,7 +243,7 @@ class GeneralPage extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
-                      'Contract Duration:  ' + tenancy.duration,
+                      'Signed: 2',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.white70,
@@ -276,30 +252,6 @@ class GeneralPage extends StatelessWidget {
                     ),
                   ),
                   Spacer(),
-                  Container(
-                      padding: EdgeInsets.all(10.0),
-                      margin: EdgeInsets.only(bottom: 8.0),
-                      child: Row(
-                        children: <Widget>[
-                          Text(
-                            'From: ' + tenancy.from,
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.white70,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(width: 30.0),
-                          Text(
-                            'To: ' + tenancy.to,
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.white70,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      )),
                 ],
               ),
             ),
@@ -319,7 +271,7 @@ class GeneralPage extends StatelessWidget {
       onTap: () => Navigator.of(context).push(MaterialPageRoute(
           builder: (_) => text == 'Property Listings'
               ? PropertyListings()
-              : ProfileScreen(name, imgPath))),
+              : Tenants())),
       child: Container(
         margin: EdgeInsets.only(top: 15, right: 15),
         padding: EdgeInsets.all(15),
