@@ -4,8 +4,9 @@ import 'package:tenant_management_app_landlordview/widgets/maintenance_card.dart
 
 class Maintenance extends StatelessWidget {
   final String propertyNo;
+  final int maintenanceIdx;
 
-  Maintenance({this.propertyNo});
+  Maintenance({this.propertyNo, this.maintenanceIdx});
 
   @override
   Widget build(BuildContext context) {
@@ -110,10 +111,10 @@ class Maintenance extends StatelessWidget {
                           );
                         },
                         padding: EdgeInsets.zero,
-                        itemCount: getMaintenancesCard().length,
+                        itemCount: getMaintenancesCard()[maintenanceIdx].length,
                         itemBuilder: (BuildContext context, int index) {
                           return MaintenanceCardWidget(
-                            maintenance: getMaintenancesCard()[index],
+                            maintenance: getMaintenancesCard()[maintenanceIdx][index],
                           );
                         },
                       ),

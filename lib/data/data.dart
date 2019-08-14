@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tenant_management_app_landlordview/models/maintenance_contractor_model.dart';
 import 'package:tenant_management_app_landlordview/models/maintenance_model.dart';
 import 'package:tenant_management_app_landlordview/models/payment_model.dart';
 import 'package:tenant_management_app_landlordview/models/property_model.dart';
@@ -8,9 +9,9 @@ import 'package:tenant_management_app_landlordview/models/tenant_model.dart';
 List<PropertyModel> getPropertiesCard() {
   List<PropertyModel> propertyCards = [
     PropertyModel(img: 'assets/img/pic1.jpg', rentType: 'unit', propertyNo: '#121', address: "Alam Nusantara, Setia Alam", rental: '2800',
-      pendingMaintenance: 2, completedMaintenance: 2, pendingTenancyContracts: 1, signedTenancyContracts: 1),
+      pendingMaintenance: 2, completedMaintenance: 2, pendingTenancyContracts: 1, signedTenancyContracts: 1, maintenanceIdx: 0),
     PropertyModel(img: 'assets/img/pic2.jpg', rentType: 'room', propertyNo: '#122', address: "The Lake Residence, Puchong", rental: '2200',
-      pendingMaintenance: 2, completedMaintenance: 2, pendingTenancyContracts: 1, signedTenancyContracts: 1)
+      pendingMaintenance: 2, completedMaintenance: 2, pendingTenancyContracts: 1, signedTenancyContracts: 1, maintenanceIdx: 1)
   ];
 
   return propertyCards;
@@ -43,16 +44,37 @@ List<List<PaymentModel>> getPaymentsCard() {
   return paymentCards;
 }
 
-List<MaintenanceModel> getMaintenancesCard() {
-  List<MaintenanceModel> maintenanceCards = [
-    MaintenanceModel(Icons.build, Color(0xFFff415f), "Plumbing Problem",
-        "07-23", "20.00", 350.00, 'Plumbing', false),
-    MaintenanceModel(Icons.build, Color(0xFFff415f), "Broken Television",
-        "05-01", "14.00", 350.0, 'Appliances', false),
-    MaintenanceModel(Icons.build, Color(0xFFff415f), "Household Cleaning",
-        "04-01", "10.00", 350.00, 'Household', true),
-    MaintenanceModel(Icons.build, Color(0xFFff415f), "Broken Wires",
-        "03-01", "09.00", 350.00, 'Electrical', true),
+List<List<MaintenanceModel>> getMaintenancesCard() {
+  List<List<MaintenanceModel>> maintenanceCards = 
+  [
+    [
+      MaintenanceModel(Icons.build, "Plumbing Problem",
+          "-", "-", Color(0xFFff415f), 350.00, 'Plumbing', false, "#234", false,
+          getPropertiesCard()[0], null),
+      MaintenanceModel(Icons.build, "Broken Television",
+          "05-01", "14.00", Color(0xFFff415f), 350.0, 'Appliances', false, "#233", true,
+          getPropertiesCard()[0], getMaintenanceContractorsCard()[0]),
+      MaintenanceModel(Icons.build, "Household Cleaning",
+          "04-01", "10.00", Color(0xFFff415f), 350.00, 'Household', true, "#232", true,
+          getPropertiesCard()[0] ,getMaintenanceContractorsCard()[1]),
+      MaintenanceModel(Icons.build, "Broken Wires",
+          "03-01", "09.00", Color(0xFFff415f), 350.00, 'Electrical', true, "#231", true,
+          getPropertiesCard()[0], getMaintenanceContractorsCard()[1]),
+    ],
+    [
+      MaintenanceModel(Icons.build, "Plumbing Problem",
+          "-", "-", Color(0xFFff415f), 350.00, 'Plumbing', false, "#234", false,
+          getPropertiesCard()[1], null),
+      MaintenanceModel(Icons.build, "Broken Television",
+          "05-01", "14.00", Color(0xFFff415f), 350.0, 'Appliances', false, "#233", true,
+          getPropertiesCard()[1], getMaintenanceContractorsCard()[0]),
+      MaintenanceModel(Icons.build, "Household Cleaning",
+          "04-01", "10.00", Color(0xFFff415f), 350.00, 'Household', true, "#232", true,
+          getPropertiesCard()[1] ,getMaintenanceContractorsCard()[1]),
+      MaintenanceModel(Icons.build, "Broken Wires",
+          "03-01", "09.00", Color(0xFFff415f), 350.00, 'Electrical', true, "#231", true,
+          getPropertiesCard()[1], getMaintenanceContractorsCard()[1]),
+    ],
   ];
 
   return maintenanceCards;
@@ -78,4 +100,15 @@ List<TenantModel> getTenantsCard() {
   ];
 
   return tenantCards;
+}
+
+List<MaintenanceContractorModel> getMaintenanceContractorsCard() {
+  List<MaintenanceContractorModel> maintenanceContractorCards = [
+    MaintenanceContractorModel('#321', 'Robert', 'assets/images/myAvatar.png', "", 'Plumbing',
+        Color(0xFFff415f)),
+    MaintenanceContractorModel('#322', 'Marcus', 'assets/images/myAvatar.png', "", 'Appliances',
+        Color(0xFFff415f))
+  ];
+
+  return maintenanceContractorCards;
 }

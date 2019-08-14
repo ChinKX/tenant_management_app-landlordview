@@ -75,7 +75,7 @@ class _PropertyMaintenanceCardWidgetState extends State<PropertyMaintenanceCardW
             ),
           ),
         ),
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => Maintenance(propertyNo: widget.property.propertyNo))),
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => Maintenance(propertyNo: widget.property.propertyNo, maintenanceIdx: widget.property.maintenanceIdx,))),
       )
     );
   }

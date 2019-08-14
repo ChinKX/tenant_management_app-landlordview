@@ -77,7 +77,7 @@ class _PaymentCardWidgetState extends State<PaymentCardWidget> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text('Issue: '),
+              Text('Issued: '),
               Text(widget.payment.issueDate,
                   style: TextStyle(
                       inherit: true, fontSize: 12.0, color: Colors.black45)),

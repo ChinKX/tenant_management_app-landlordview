@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tenant_management_app_landlordview/app_screens/maintenance_details.dart';
+import 'package:tenant_management_app_landlordview/app_screens/payment_form.dart';
 import 'package:tenant_management_app_landlordview/models/maintenance_model.dart';
 
 class MaintenanceCardWidget extends StatefulWidget {
@@ -14,6 +16,7 @@ class _MaintenanceCardWidgetState extends State<MaintenanceCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
+        child: GestureDetector(
       child: ListTile(
         dense: true,
         trailing: Row(
@@ -25,16 +28,21 @@ class _MaintenanceCardWidgetState extends State<MaintenanceCardWidget> {
                   inherit: true, fontWeight: FontWeight.w700, fontSize: 16.0),
             ),
             IconButton(
-              onPressed: !widget.maintenance.completed ? () {
-                //Navigator.of(context).push(MaterialPageRoute(builder: (_) => MaintenanceForm()));
-              } : null,
-              icon: !widget.maintenance.completed ? Icon(
-                  Icons.assignment,
-                  color: Colors.blueAccent,
-                ) : Icon(
-                  Icons.assignment_turned_in,
-                  color: Colors.green,
-                ),
+              onPressed: widget.maintenance.completed
+                  ? () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => PaymentForm()));
+                    }
+                  : null,
+              icon: !widget.maintenance.completed
+                  ? Icon(
+                      Icons.assignment,
+                      color: Colors.blueAccent,
+                    )
+                  : Icon(
+                      Icons.payment,
+                      color: Colors.green,
+                    ),
             )
           ],
         ),
@@ -90,6 +98,9 @@ class _MaintenanceCardWidgetState extends State<MaintenanceCardWidget> {
           ),
         ),
       ),
-    );
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(builder: (_) => MaintenanceDetails(widget.maintenance)));
+      },
+    ));
   }
 }

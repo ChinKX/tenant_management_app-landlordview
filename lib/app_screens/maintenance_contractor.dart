@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tenant_management_app_landlordview/data/data.dart';
-import 'package:tenant_management_app_landlordview/widgets/property_maintenance_card.dart';
+import 'package:tenant_management_app_landlordview/widgets/maintenance_contractor_card.dart';
 
-class PropertyMaintenance extends StatelessWidget {
+class MaintenanceContractor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _media = MediaQuery.of(context).size;
@@ -47,10 +47,10 @@ class PropertyMaintenance extends StatelessWidget {
                           );
                         },
                         padding: EdgeInsets.zero,
-                        itemCount: getPropertiesCard().length,
+                        itemCount: getMaintenanceContractorsCard().length,
                         itemBuilder: (BuildContext context, int index) {
-                          return PropertyMaintenanceCardWidget(
-                            property: getPropertiesCard()[index],
+                          return MaintenanceContractorCardWidget(
+                            maintenanceContractor: getMaintenanceContractorsCard()[index],
                           );
                         },
                       ),

@@ -10,8 +10,9 @@ class PropertyModel {
   final int completedMaintenance;
   final int pendingTenancyContracts;
   final int signedTenancyContracts;
+  final int maintenanceIdx;
 
   PropertyModel({this.img, this.rentType, this.propertyNo, this.address, this.rental,
     this.pendingMaintenance ,this.completedMaintenance, this.pendingTenancyContracts,
-    this.signedTenancyContracts});
+    this.signedTenancyContracts, this.maintenanceIdx});
 }

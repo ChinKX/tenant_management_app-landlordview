@@ -4,12 +4,10 @@ import 'package:tenant_management_app_landlordview/app_screens/property_maintena
 import 'package:tenant_management_app_landlordview/app_screens/property_tenancy.dart';
 import 'package:tenant_management_app_landlordview/app_screens/tenants.dart';
 import 'package:tenant_management_app_landlordview/data/data.dart';
-import 'package:tenant_management_app_landlordview/models/maintenance_model.dart';
 import 'package:tenant_management_app_landlordview/models/tenancy_model.dart';
 import 'package:tenant_management_app_landlordview/utils/screen_size.dart';
 
 class GeneralPage extends StatelessWidget {
-  MaintenanceModel maintenance = getMaintenancesCard()[0];
   TenancyModel tenancy = getTenanciesCard()[0];
 
   String name = 'Chris';
@@ -93,7 +91,7 @@ class GeneralPage extends StatelessWidget {
                 right: 20,
               ),
               height: screenAwareSize(
-                  _media.longestSide <= 775 ? 120 : 80, context),
+                  _media.longestSide <= 775 ? 120 : 100, context),
               decoration: BoxDecoration(
                 color: Color(0xff6C5B7B),
                 borderRadius: BorderRadius.circular(10),
@@ -188,7 +186,7 @@ class GeneralPage extends StatelessWidget {
                 right: 20,
               ),
               height:
-                  screenAwareSize(_media.longestSide <= 775 ? 120 : 80, context),
+                  screenAwareSize(_media.longestSide <= 775 ? 120 : 100, context),
               decoration: BoxDecoration(
                 color: Color(0xff355C7D),
                 borderRadius: BorderRadius.circular(10),
@@ -229,7 +227,7 @@ class GeneralPage extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
-                      "Pending: 2",
+                      "Pending Contracts: 2",
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.white70,
@@ -243,7 +241,7 @@ class GeneralPage extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
-                      'Signed: 2',
+                      'Signed Contracts: 2',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.white70,

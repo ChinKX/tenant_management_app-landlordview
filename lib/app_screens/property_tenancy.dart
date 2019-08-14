@@ -21,7 +21,7 @@ class PropertyTenancy extends StatelessWidget {
                   padding: const EdgeInsets.only(
                     left: 25.0,
                     bottom: 15,
-                    top: 30.0,
+                    top: 35.0,
                   ),
                   child: Text(
                     "23 july 2019",
